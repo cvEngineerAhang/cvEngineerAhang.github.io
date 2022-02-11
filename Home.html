@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width = device -width"/>
+	<title>Microsoft Store</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/7.17.0_video-js.css" rel="stylesheet"/>
+	<script src="js/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/7.17.0_video.js"></script>
+</head>
+<style>
+
+    a:hover {
+        text-decoration: none;
+    }
+
+
+    .img_1 {
+        border-radius: 50%;
+    }
+
+    .img_2 {
+        border-radius: 20px;
+    }
+
+    .list-group {
+        border-radius: 0 20px 0 0;
+    }
+
+    .left {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .right {
+        padding: 0 10px;
+        position: relative;
+        left: 155px;
+    }
+
+    .header {
+        padding: 0;
+    }
+
+    .body {
+        position: absolute;
+        top: 68px;
+        padding-left: 0px;
+    }
+
+    .cur, .cur_2, .cur_3 {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        position: absolute;
+        text-align: center;
+        transition: all 0.5s ease-in 0s;
+        border-radius: 20px;
+    }
+
+    .set1, .set2, .set3, .set4 {
+        display: block;
+    }
+
+    .set4 {
+        transition: all 0.2s ease-in 0s;
+        background-color: white;
+        border-radius: 20px;
+    }
+
+    .app1, .app2, .app3, .app4 {
+        transition: all 0.4s ease-in 0s;
+        margin-bottom: 0;
+    }
+
+    .app {
+        overflow: hidden;
+    }
+
+    .app4:hover {
+        transform: scale(1.05, 1.05);
+    }
+
+    .app3:hover {
+        transform: scale(1.05, 1.05);
+    }
+
+    .app2:hover {
+        transform: scale(1.05, 1.05);
+    }
+
+    .app1:hover {
+        transform: scale(1.05, 1.05);
+    }
+
+
+    .s_1, .s_2, .s_3, .s_4, .s_5, .s_6 {
+        transition: all 0.6s ease-in 0s;
+        transform: scale(1.5, 1.5);
+    }
+
+    .bg {
+        width: 100%;
+        height: 460px;
+        border-radius: 20px;
+        background: linear-gradient(125deg, pink, lightpink, wheat, #e2e0e0);
+        background-size: 300%;
+        animation: Background_animation 15s infinite;
+    }
+
+    .list-group-item.active {
+        z-index: 2;
+        color: #fff;
+        transition: all 0.5s ease-in 0s;
+        background-color: #007bff;
+        border-color: #999999;
+    }
+
+    .btm {
+        position: relative;
+        top: 50px;
+    }
+
+    .j1 {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(125deg, #2c3e50, #27ae60, #298, #a6e1ec);
+        background-size: 400%;
+        border-radius: .3rem;
+        animation: Background_animation 30s infinite;
+    }
+
+    .j2 {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(125deg, #a6e1ec, #2c3e50, #27ae60, #229988);
+        background-size: 400%;
+        border-radius: .3rem;
+        animation: Background_animation 30s infinite;
+    }
+
+    @keyframes Background_animation {
+        0% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0 50%;
+        }
+    }
+
+    .text_span {
+        color: black;
+        transition: 0.5s;
+    }
+
+    .text_h2:hover .text_span:nth-child(1) {
+        margin-right: 10px;
+    }
+
+    .text_h2:hover .text_span:nth-child(1):after {
+        content: "'";
+    }
+
+    .text_h2:hover .text_span:nth-child(2) {
+        margin-right: 40px;
+    }
+
+    .text_h2 {
+    }
+
+    .text_span_2 {
+        color: black;
+        transition: 0.5s;
+    }
+
+    .text_h2_2:hover .text_span_2:nth-child(1) {
+        margin-right: 10px;
+    }
+
+    /*.text_h2_2:hover .text_span_2:nth-child(1):after {*/
+    /*    content: "'";*/
+    /*}*/
+
+    .text_h2_2:hover .text_span_2:nth-child(2) {
+        margin-right: 40px;
+    }
+
+    .text_h2_2 {
+    }
+
+    .btn-success.disabled, .btn-success:disabled {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745
+    }
+
+    .home, .home2, .home3, .home4, .home5 {
+    }
+
+    .Open-light {
+        display: none;
+    }
+
+    .Open-dark {
+        display: inline-block;
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #403f3f;
+        border-color: #403f3f;
+    }
+</style>
+<script>
+
+    /*
+	$(".box").click(function () {
+	    $("span").mouseover(function () {
+	        $(this).css("text-shadow", "0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 40px #FFFFFF, 0 0 80px #FFFFFF, 0 0 120px #FFFFFF");
+	    });
+	    $("span").mouseout(function () {
+	        $(this).css("text-shadow", "0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000, 0 0 120px #000000");
+	    });
+	});
+	   $(".text_h2").hover(function () {
+			$(this).attr("text-shadow", "0 0 120px #ffffff");
+		}).mouseout(function () {
+			$(this).attr("class", "");
+		})*/
+    // alert($(window).height());           //浏览器时下窗口可视区域高度
+    // alert($(document).height());         //浏览器时下窗口文档的高度
+    // alert($(document.body).height());    //浏览器时下窗口文档body的高度
+    // alert($(document.body).outerHeight( true ));  //浏览器时下窗口文档body的总高度 包括border padding margin
+
+    $(document).ready(function () {
+        $(".text_h2").hover(function () {
+                $(".text_h2").css("text-shadow", "0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000, 0 0 120px #000000");
+            },
+            function () {
+                $(".text_h2").css("text-shadow", "");
+            });
+    }) //Tv部分字体变化
+    $(document).ready(function () {
+        $(".text_h2_2").hover(function () {
+                $(".text_h2_2").css("text-shadow", "0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000, 0 0 120px #000000");
+            },
+            function () {
+                $(".text_h2_2").css("text-shadow", "");
+            });
+    }) //Tv部分字体变化
+    $(function () {
+        var f = false;
+        $(".Open-dark, .Open-light").click(function () {
+            if (f = !f) {
+                $('.set4').css("background-color", "black");
+                $('.text_span').css("color", "white");
+                $('.text_span_2').css("color", "white");
+                $('.Open-dark').css("display", "none");
+                $('.Open-light').css("display", "inline-block");
+                $(".text_h2_2").hover(
+                    function () {
+                        $(".text_h2_2").css("text-shadow", "0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 40px #FFFFFF, 0 0 80px #FFFFFF, 0 0 120px #FFFFFF");
+                    },
+                    function () {
+                        $(".text_h2_2").css("text-shadow", "")
+                    })
+                $(".text_h2").hover(
+                    function () {
+                        $(".text_h2").css("text-shadow", "0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 40px #FFFFFF, 0 0 80px #FFFFFF, 0 0 120px #FFFFFF");
+                    },
+                    function () {
+                        $(".text_h2").css("text-shadow", "")
+                    })
+            } else {
+                $('.set4').css("background-color", "white");
+                $('.text_span').css("color", "black");
+                $('.text_span_2').css("color", "black");
+                $('.Open-dark').css("display", "inline-block");
+                $('.Open-light').css("display", "none");
+                $(".text_h2_2").hover(
+                    function () {
+                        $(".text_h2_2").css("text-shadow", "0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000, 0 0 120px #000000");
+                    },
+                    function () {
+                        $(".text_h2_2").css("text-shadow", "")
+                    })
+                $(".text_h2").hover(
+                    function () {
+                        $(".text_h2").css("text-shadow", "0 0 10px #000000, 0 0 20px #000000, 0 0 40px #000000, 0 0 80px #000000, 0 0 120px #000000");
+                    },
+                    function () {
+                        $(".text_h2").css("text-shadow", "")
+                    })
+            }
+        });
+    });
+
+    function emil() {
+        $('#model').modal()
+    }
+
+    function emil2() {
+        $('#model2').modal()
+    }
+
+    function emil3() {
+        $('#model3').modal()
+    }
+
+    $(document).ready(function () {
+        $(".mouse").hover(
+            function () {
+                $('.cur').css("opacity", "0.8");
+            },
+            function () {
+                $('.cur').css("opacity", "0");
+            }
+        )
+    });  //图片动画
+    $(document).ready(function () {
+        $(".mouse2").hover(
+            function () {
+                $('.cur_2').css("opacity", "0.8");
+            },
+            function () {
+                $('.cur_2').css("opacity", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".mouse3").hover(
+            function () {
+                $('.cur_3').css("opacity", "0.8");
+            },
+            function () {
+                $('.cur_3').css("opacity", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".app1").hover(
+            function () {
+                $('.app1').css("margin-top", "30px");
+            },
+            function () {
+                $('.app1').css("margin-top", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".app2").hover(
+            function () {
+                $('.app2').css("margin-top", "30px");
+            },
+            function () {
+                $('.app2').css("margin-top", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".app3").hover(
+            function () {
+                $('.app3').css("margin-top", "30px");
+            },
+            function () {
+                $('.app3').css("margin-top", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".app4").hover(
+            function () {
+                $('.app4').css("margin-top", "30px");
+            },
+            function () {
+                $('.app4').css("margin-top", "0");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_1").hover(
+            function () {
+                $('.s_1').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_1').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_6").hover(
+            function () {
+                $('.s_6').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_6').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_5").hover(
+            function () {
+                $('.s_5').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_5').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_4").hover(
+            function () {
+                $('.s_4').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_4').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_3").hover(
+            function () {
+                $('.s_3').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_3').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".s_2").hover(
+            function () {
+                $('.s_2').css("transform", "scale(2,2)");
+            },
+            function () {
+                $('.s_2').css("transform", "scale(1.5,1.5)");
+            }
+        )
+    });
+    $(document).ready(function () {
+        $(".one").click(function () {
+            $("#home").attr('src', 'svg/home-fill.svg');
+            $("#home2").attr('src', 'svg/star.svg');
+            $("#home3").attr('src', 'svg/heart.svg');
+            $("#home4").attr('src', 'svg/telescope.svg');
+            $("#home5").attr('src', 'svg/cx.svg');
+            $(".set1").show();
+            $(".set2").hide();
+            $(".set3").hide();
+            $(".set4").hide();
+            $(".set5").hide();
+        });
+        $(".two").click(function () {
+            $("#home").attr('src', 'svg/home.svg');
+            $("#home2").attr('src', 'svg/star-fill.svg');
+            $("#home3").attr('src', 'svg/heart.svg');
+            $("#home4").attr('src', 'svg/telescope.svg');
+            $("#home5").attr('src', 'svg/cx.svg');
+
+            $(".set1").hide();
+            $(".set2").show();
+            $(".set3").hide();
+            $(".set4").hide();
+            $(".set5").hide();
+        });
+        $(".three").click(function () {
+            $("#home").attr('src', 'svg/home.svg');
+            $("#home2").attr('src', 'svg/star.svg');
+            $("#home3").attr('src', 'svg/heart-fill.svg');
+            $("#home4").attr('src', 'svg/telescope.svg');
+            $("#home5").attr('src', 'svg/cx.svg');
+
+            $(".set1").hide();
+            $(".set2").hide();
+            $(".set3").show();
+            $(".set4").hide();
+            $(".set5").hide();
+        });
+        $(".four").click(function () {
+            $("#home").attr('src', 'svg/home.svg');
+            $("#home2").attr('src', 'svg/star.svg');
+            $("#home3").attr('src', 'svg/heart.svg');
+            $("#home4").attr('src', 'svg/telescope-fill.svg');
+            $("#home5").attr('src', 'svg/cx.svg');
+
+            $(".set1").hide();
+            $(".set2").hide();
+            $(".set3").hide();
+            $(".set4").show();
+            $(".set5").hide();
+        });
+        $(".five").click(function () {
+            $("#home").attr('src', 'svg/home.svg');
+            $("#home2").attr('src', 'svg/star.svg');
+            $("#home3").attr('src', 'svg/heart.svg');
+            $("#home4").attr('src', 'svg/telescope.svg');
+            $("#home5").attr('src', 'svg/cx2.svg');
+            $(".set1").hide();
+            $(".set2").hide();
+            $(".set3").hide();
+            $(".set4").hide();
+            $(".set5").show();
+        });
+    }); //控制col-1侧边导航栏变化图片
+    $(document).ready(function () {
+        $(".set1").show();
+        $(".set2").hide();
+        $(".set3").hide();
+        $(".set4").hide();
+        $(".set5").hide();
+    }); //进入页面时加载set1
+    $(function () {  //pop提示
+        $('*[data-toggle="popover"]').popover();
+        $('*[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).ready(function () {
+        let w = $(document).width();
+        if (w < 1140) {
+            $('.right').css("left", "0");
+            $('.body').css("padding-left", "15px");
+
+        }
+        if (w > 1140) {
+            $('.right').css("left", "155px");
+        }
+        $(window).resize(function () {           //当浏览器大小变化时
+            let w = $(document).width();
+            if (w < 1140) {
+                $('.right').css("left", "0");
+                $('.body').css("padding-left", "15px");
+            }
+            if (w > 1140) {
+                $('.right').css("left", "155px");
+            }
+        });
+    });
+
+</script>
+<body class="body-father">
+<div class="container-fluid header fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a href="#" style="color: #666666" class="font-weight-bold text-left"><img alt="" src="images/S1_2.png"/>Microsoft
+			Store <small style="color: #999999">PREVIEW</small></a>
+		<img class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" alt=""
+		     src="svg/rows.svg"/>
+		<div class="nav-item d-none d-lg-block" style="background-color: white; min-width:80%"></div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto text-center">
+				<li class="nav-item dropdown">
+					<a class="nav-link ml-3 mt-2 font-weight-bold" href="#" id="navbarDropdown" role="button"
+					   data-toggle="dropdown"
+					   aria-haspopup="true" aria-expanded="false">
+						柳&nbsp;时镇
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Personal data</a>
+						<a class="dropdown-item" href="#">Hobby</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				<li class="nav-item ml-3">
+					<img src="images/2.jpg"
+					     alt=""
+					     data-html="true"
+					     class=" img_1 text-wrap"
+					     data-toggle="tooltip"
+					     data-placement="bottom"
+					     title="作者：<br/> 20软件05班：倪嘉诚"/>
+				</li>
+			</ul>
+			<br>
+			<div class="d-block d-xl-none text-center">
+				<a class="one " data-toggle="list" href="#list-home" role="tab"
+				   aria-controls="home">
+					<span class="font-weight-bold">Home</span></a>      <!--1-->
+				<a class="  two" id="list-profile-list1" data-toggle="list"
+				   href="#list-profile">
+					<span class="font-weight-bold">Apps</span></a>            <!--2-->
+				<a class="four" id="list-settings-list1" data-toggle="list"
+				   href="#list-settings">
+					<span class="font-weight-bold">Movies&TV</span></a>          <!--3-->
+				<a class="five" id="list-five-list1" data-toggle="list"
+				   href="#list-five">
+					<span class="font-weight-bold">Library</span></a>              <!--5-->
+				<a class="three" id="list-messages-list1" data-toggle="list"
+				   href="#list-messages">
+					<span class="font-weight-bold">Join</span></a>         <!--4-->
+			</div>
+		</div>
+	</nav>                          <!--navbar-->
+</div>
+<div class="container-fluid body" id="CFR" style="max-width: 100%; padding-left: 0;">
+	<div class="row">
+		<div class="col-1 d-none d-xl-block left position-fixed">       <!--//页面左侧-->
+			<div class="list-group text-center" id="list-tab" role="tablist">
+				<a class="list-group-item list-group-item-action one" data-toggle="list" href="#list-home" role="tab"
+				   aria-controls="home">
+					<img src="svg/home.svg" alt="" id="home" style="" class="mb-3 home"/>
+					<br/>
+					<span>Home</span></a>      <!--1-->
+				<a class="list-group-item list-group-item-action two" id="list-profile-list" data-toggle="list"
+				   href="#list-profile">
+					<img src="svg/star.svg" alt="" id="home2" style="" class="mb-3 home2"/>
+					<br/>
+					<span>Apps</span></a>            <!--2-->
+				<a class="list-group-item list-group-item-action four" id="list-settings-list" data-toggle="list"
+				   href="#list-settings">
+					<img src="svg/telescope.svg" alt="" id="home4" style="" class="mb-3 home4"/>
+					<br/>
+					<span>Movies&TV</span></a>          <!--3-->
+				<a class="list-group-item list-group-item-action five" id="list-five-list" data-toggle="list"
+				   href="#list-five">
+					<img src="svg/cx.svg" alt="" id="home5" style="" class="mb-3 home5"/>
+					<br/>
+					<span>Library</span></a>              <!--5-->
+				<a class="list-group-item list-group-item-action three" id="list-messages-list" data-toggle="list"
+				   href="#list-messages">
+					<img src="svg/heart.svg" alt="" id="home3" style="" class="mb-3 home3"/>
+					<br/>
+					<span>Join</span></a>         <!--4-->
+			</div>
+		</div>
+		<div class="col-auto col-xl-11 right">
+			<!-- //页面右侧-->
+			<div class="tab-pane fade slide set1  show active" id="list-home">
+				<!--第一级页面-->
+				<div id="myCarousel" class="carousel slide carousel-fade show" data-ride="carousel">
+					<!--轮播图-->
+					<div class="carousel-inner">
+						<!--隐藏的轮播选项-->
+						<div class="carousel-item active mouse" data-interval="3000"><!--轮播选项-->
+							<img src="images/3651_2.png" alt="" class="img_2" style="width: 100%">
+							<div class="cur">
+								<h2 style="color: tan" class="font-weight-bold font_h2 mt-5 mb-5">Welcome to
+									Microsoft's 365</h2>
+								<button class="btn btn-primary" onclick="emil()"><span
+										style="color: unset">Learn more</span>
+								</button>
+							</div>
+							<div class="carousel-caption d-none d-md-block">
+								<h2 style="color: black">To Obtain 365</h2>
+								<h4 style="color: black">Change the way you work.</h4>
+							</div>
+						</div>                        <!--1号-->
+						<div class="carousel-item mouse2" data-interval="3000"><!--轮播选项-->
+							<img src="images/jt1_2.png" alt="" class="img_2" style="width: 100%">
+							<div class="cur_2">
+								<h2 style="color: tan" class="font-weight-bold font_h2 mt-5 mb-5">Welcome to
+									iphoto</h2>
+								<button class="btn btn-primary" onclick="emil2()"><span
+										style="color: unset">Learn more</span>
+								</button>
+							</div>
+							<div class="carousel-caption d-none d-md-block">
+								<h2 style="color: black">To Obtain Iphoto</h2>
+								<h4 style="color: black">Keep the cell phone changes life.</h4>
+							</div>
+						</div>                              <!--2号-->
+						<div class="carousel-item mouse3" data-interval="3000"><!--轮播选项-->
+							<img src="images/nike1_3.png" alt="" class="img_2" style="width: 100%">
+							<div class="cur_3">
+								<h2 style="color: tan" class="font-weight-bold font_h2 mt-5 mb-5">Welcome to
+									NIKE</h2>
+								<button class="btn btn-primary" onclick="emil3()"><span
+										style="color: unset">Learn more</span>
+								</button>
+							</div>
+							<div class="carousel-caption d-none d-md-block">
+								<h2 style="color: black">To Obtain NIKE</h2>
+								<h4 style="color: black">The strength of the wind.</h4>
+							</div>
+						</div>                              <!--3号-->
+					</div>
+					<ul class="carousel-indicators">
+						<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+						<li data-slide-to="1" data-target="#myCarousel"></li>
+						<li data-slide-to="2" data-target="#myCarousel"></li>
+					</ul>                                                         <!--轮播控制器-->
+				</div>
+				<div class="h4 font-weight-bold mt-2">
+					Top free apps
+				</div>                                                       <!--标题-->
+				<div class="h5  text-right font-weight-bold mb-3">
+					<a href="#">See all</a>
+				</div>                                           <!--标题-->
+				<div class="row no-gutters mb-2">
+					<div class="bg">
+						<h2 style="color: white;" class="font-weight-bold text-center mt-5 mb-5">Welcome to
+							Microsoft's 365</h2>
+						<div class="row no-gutters text-center ">
+							<div class="col-4 col-xl-2 mt-5">
+								<a href="#">
+									<img src="svg/word.svg" class="s_1" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">Word</span>
+								</a>
+							</div>
+							<div class="col-4 col-xl-2 mt-5">
+								<a href="#">
+									<img src="svg/Excel.svg" class="s_2" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">Excel</span>
+								</a>
+							</div>
+							<div class="col-4 col-xl-2 mt-5 ">
+								<a href="#">
+									<img src="svg/PowerPoint.svg" class="s_3" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">PowerPoint</span>
+								</a>
+							</div>
+							<div class="col-4 col-xl-2 mt-5 ">
+								<a href="#">
+									<img src="svg/OneNote.svg" class="s_4" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">OneNote</span>
+								</a>
+							</div>
+							<div class="col-4 col-xl-2 mt-5">
+								<a href="#">
+									<img src="svg/Visio.svg" class="s_5" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">Visio</span>
+								</a>
+							</div>
+							<div class="col-4 col-xl-2 mt-5">
+								<a href="#">
+									<img src="svg/OneDrive.svg" class="s_6" alt="">
+									<br/>
+									<br/>
+									<span style="color:white;opacity: 0.8" class="font-weight-bold">OneDrive</span>
+								</a>
+							</div>
+						</div>
+					</div>                                                                         <!--365-->
+				</div>
+				<div class="row no-gutters app">
+					<!--app all-->
+					<div class="col-12 col-xl-3 app1">
+						<div class="card text-center border-0">
+							<div class="card-body">
+								<img class="card-img w-25" src="svg/iTunesStore.svg" alt="Card image cap">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">Some quick example text to build on the card title and make up the
+									bulk of the card's content.</p>
+								<a class="btn btn-primary">Get App</a>
+							</div>
+						</div>
+					</div>                                                       <!--app1-->
+					<div class="col-12 col-xl-3 app2">
+						<div class="card text-center border-0">
+							<div class="card-body">
+								<img class="card-img w-25" src="images/net.png" alt="Card image cap">
+								<h5 class="card-title">Netflix</h5>
+								<p class="card-text">Netflix has something for everyone. Watch TV shows and movies
+									recommended just for you.</p>
+								<a class="btn btn-primary">Get App</a>
+							</div>
+						</div>
+					</div>                                                       <!--app2-->
+					<div class="col-12 col-xl-3 app3">
+						<div class="card text-center border-0">
+							<div class="card-body">
+								<img class="card-img w-25" src="images/xbox.png" alt="Card image cap">
+								<h5 class="card-title">Xbox</h5>
+								<p class="card-text">With the new Xbox app for Windows 10 PCs, play the games you love
+									to play.</p>
+								<a class="btn btn-primary">Get App</a>
+							</div>
+						</div>
+					</div>                                                       <!--app3-->
+					<div class="col-12 col-xl-3 app4">
+						<div class="card text-center border-0">
+							<div class="card-body">
+								<img class="card-img w-25" src="images/tik.png" alt="Card image cap">
+								<h5 class="card-title">Tik Tok</h5>
+								<p class="card-text">TikTok is THE destination for mobile videos. On TikTok, short-form
+									videos are exciting.</p>
+								<a class="btn btn-primary">Get App</a>
+							</div>
+						</div>
+					</div>                                                       <!--app4-->
+				</div>
+				<div class="navbar-fixed-bottom btm" style="width: 100%; height: 50px">
+					<div class="text-center font-weight-bold">The producer: NI JIA CHENG</div>
+				</div>                      <!--第一级页面结尾-->
+			</div>         <!--1-->
+			<div class="tab-pane fade slide set2" id="list-profile">
+				<div class="row " style="margin-right: 0;">
+					<div class="col-auto col-xl-3 mb-5" style="padding-left: 20px;">
+						<div class="card" style="width: 100%; border-radius: 20px;">
+							<div class="card-body text-center">
+								<img class="card-img w-50 mb-5" src="images/tik.png" alt="Card image cap">
+								<h2 class="card-title">Tik Tok</h2>
+								<h4 class="card-title mb-5">Bytedance Pte.Ltd</h4>
+								<button class="btn btn-secondary w-50 mb-5">Open</button>
+								<p class="card-text">This also contains an extension for Microsoft Edge.</p>
+								<p href="#" class="font-weight-bold h5 mb-5">3.0<img src="svg/star-fill.svg" alt=""/>
+								</p>
+								<h4 class="card-title mb-5">Since video technology was born, a worldwide popular short
+									video is the short music video (music video).
+								</h4>
+								<button class="btn btn-secondary w-50 mt-5 mb-5" style="border-radius: 20px;">Enter
+								</button>
+							</div>
+						</div>
+						<div class="d-block d-xl-none"
+						     style="border: 1px solid #DFDFDF; border-radius: 20px; min-height: 300px">
+							<div class="row mb-3">
+								<a href="#" class="text-left h3 mt-2 ml-5">
+									Screenshots
+								</a>
+							</div>
+							<div class="row text-center row_size">
+								<div class="col-12 col-xl-4 col_size">
+									<img src="images/q1.png" class="w-75" alt=""/>
+								</div>
+								<div class="col-12 col-xl-4 col_size">
+									<img src="images/q2.png" class="w-75" alt=""/>
+								</div>
+								<div class="col-12 col-xl-4 col_size">
+									<img src="images/q3.png" class="w-75" alt=""/>
+								</div>
+							</div>
+						</div>
+						<div class="mt-2 d-block d-xl-none"
+						     style="border: 1px solid #DFDFDF; border-radius: 20px; min-height: 300px">
+							<div class="row mb-3">
+								<a href="#" class="text-left h3 mt-2 ml-5">
+									Description
+								</a>
+							</div>
+							<div class="row">
+								<p class="text-center h5">
+									TikTok is THE destination for mobile videos. On TikTok,<br/> short-form videos are
+									exciting, <br/> spontaneous, and genuine. <br/> Whether you’re a sports
+									fanatic,<br/> a pet
+									enthusiast, or just looking for a laugh, <br/>there’s something for everyone on
+									TikTok.
+									<br/>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-9 d-none d-xl-block">
+						<div class="" style="border: 1px solid #DFDFDF; border-radius: 20px; min-height: 300px">
+							<div class="row row_right mb-3">
+								<a href="#" class="text-left h3 mt-2 ml-5">
+									Screenshots
+								</a>
+							</div>
+							<div class="row">
+								<div class="col-4">
+									<a href="images/q1.png"><img src="images/q1.png" class="w-75" alt=""/></a>
+								</div>
+								<div class="col-4">
+									<img src="images/q2.png" class="w-75" alt=""/>
+								</div>
+								<div class="col-4">
+									<img src="images/q3.png" class="w-75" alt=""/>
+								</div>
+							</div>
+						</div>
+						<div class="mt-2" style="border: 1px solid #DFDFDF; border-radius: 20px; min-height: 300px">
+							<div class="row mb-3">
+								<a href="#" class="text-left h3 mt-2 ml-5">
+									Description
+								</a>
+							</div>
+							<div class="row">
+								<p class="text-center h5">
+									TikTok is THE destination for mobile videos. On TikTok, short-form videos are
+									exciting, spontaneous, and genuine. Whether you’re a sports fanatic,<br/> a pet
+									enthusiast, or just looking for a laugh, there’s something for everyone on TikTok.
+									All you have to do is watch,<br/> engage with what you like, skip what you don’t,
+									and
+									you’ll find an endless stream of short videos that feel personalized just for
+									you.<br/>
+									From your morning coffee to your afternoon errands, TikTok has the videos that are
+									guaranteed to make your day.
+								</p>
+							</div>
+						</div>
+						<div class="mt-2" style="border: 1px solid #DFDFDF; border-radius: 20px; min-height: 300px">
+							<div class="row mb-3">
+								<a href="#" class="text-left h3 mt-2 ml-5">
+									Ratings and reviews
+								</a>
+							</div>
+							<div class="row">
+								<div class="col-4 text-center">
+									<div class="display-2 font-weight-bold ml-3 mt-4">3.0</div>
+								</div>
+								<div class="col-4 text-left">
+									<div class="progress mb-3">
+										<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+										     aria-valuemax="100"></div>
+									</div>
+									<div class="progress mb-3">
+										<div class="progress-bar" role="progressbar" style="width: 25%"
+										     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+									<div class="progress mb-3">
+										<div class="progress-bar" role="progressbar" style="width: 100%"
+										     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+
+									<div class="progress mb-3">
+										<div class="progress-bar" role="progressbar" style="width: 75%"
+										     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<div class="progress mb-3">
+										<div class="progress-bar" role="progressbar" style="width: 50%"
+										     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								</div>
+								<div class="col-4 text-center">
+									<p class="h4 mb-3">We need your precious advice</p>
+									<button class="btn btn-primary">Send comments</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>                   <!--2-->
+			<div class="tab-pane fade slide set3" id="list-messages">
+				<div class="jumbotron text-center j1" style="border-radius: 20px">
+					<h1 class="display-3">Hello, Microsoft Store!</h1>
+					<p class="lead">Microsoft (Microsoft) is an American multinational technology companies, by Bill
+						Gates and Paul Allen founded on April 4, 1975.
+						Company headquartered in Redmond, Washington (Redmond, near Seattle), to research and
+						development, manufacture, authorization, and provide a wide range of computer software services
+						business is given priority to.</p>
+					<hr class="my-4">
+					<p>The most famous and popular product for the Windows operating system and Office software, is the
+						world's biggest Computer software provider, the PC (Personal Computer, Personal Computer) the
+						forerunner of software development.</p>
+				</div>
+				<div class="jumbotron text-center j2" style="border-radius: 20px">>
+					<p class="display-4">Do you want to join our Microsoft</p>
+					<hr class="my-4">
+					<p>The most famous and popular product for the Windows operating system and Office software, is the
+						world's biggest Computer software provider, the PC (Personal Computer, Personal Computer) the
+						forerunner of software development.</p>
+					<p class="lead">
+						<button class="btn btn-primary" type="button" data-toggle="collapse"
+						        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+							Join
+						</button>
+					</p>
+					<div class="collapse text-center" id="collapseExample" style="border-radius: 20px">
+						<div class="card card-body " style="border-radius: 20px">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+							squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+							ea proident.
+							<form class="was-validated" novalidate>
+								<div class="form-group text-center">
+									<label for="password" class="font-weight-bold h2">Email:</label>
+									<input type="email" class="form-control" id="password" placeholder="Enter Email"
+									       required/>
+									<div class="invalid-feedback text-center">
+										<img src="images/哭脸.png" alt="" class="mt-1"/>
+									</div>
+									<div class="valid-feedback text-center">
+										<img src="images/笑脸.png" alt="" class="mt-1"/>
+									</div>
+								</div>
+							</form>
+							<div class="text-center">
+								<button class="btn btn-outline-primary w-25 " type="submit">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>                  <!--3-->
+			<div class="tab-pane fade slide set4 text-center" id="list-settings">
+				<p class="display-3  font-weight-bold">A creative advertising from burberry</p>
+				<button class="btn btn-dark Open-dark box">ON</button>
+				<button class="btn btn-secondary Open-light box">OFF</button>
+				<p href="#" class="box font-weight-bold h4">Switch the background</p>
+				<h2 class="text_h2" style="display: inline-block">
+					<span class="text_span">dream</span>
+					<span class="text_span"></span>
+					<span class="text_span">floating</span>
+				</h2>
+				<video id="my-video" class="video-js" style="width: 100%; height: 750px" controls data-setup="{}">
+					<source src="video/bbl_5_Trim.mp4" type="video/mp4"/>
+					<p class="vjs-no-js">
+						To view this video please enable JavaScript, and consider upgrading to a
+						web browser that
+						<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+					</p>
+				</video>
+
+				<h2 class="text-center text_h2_2" style="display: inline-block">
+					<span class="text_span_2">THE</span>
+					<span class="text_span_2"></span>
+					<span class="text_span_2">END</span>
+				</h2>
+			</div>      <!--4-->
+			<div class="tab-pane fade slide set5 text-center" id="list-five">
+				<!--第五级页面开头-->
+				<div class="col no-gutters">
+					<p class="display-4 ml-3">Library</p>
+					<div class="row" style="margin-right: 0;">
+						<div style="min-width: 100%;">
+							<a class="h3 mt-5" href="#">Updates & downloads</a>
+						</div>
+
+						<div class="col ml-3 mt-5 " style="padding-left: 0; ">
+							<div class="list-group list-group-horizontal-xl text-center" id="list-tab1" role="tablist">
+								<button class="list-group-item active border-0 ml-2 text-center" id="list-home-list1"
+								        data-toggle="list" href="#list-home1"
+								        style="min-width: 150px;border-radius: 20px">
+									All
+								</button>
+								<button class="list-group-item ml-3 border-0" id="list-profile-list2" data-toggle="list"
+								        href="#list-profile2" style="min-width: 150px;border-radius: 20px">Apps
+								</button>
+								<button class="list-group-item  border-0 ml-3" id="list-messages-list3"
+								        data-toggle="list"
+								        href="#list-messages3" style="min-width: 150px;border-radius: 20px">Games
+								</button>
+								<button class="list-group-item  border-0 ml-3" id="list-settings-list4"
+								        data-toggle="list"
+								        href="#list-settings4" style="min-width: 150px;border-radius: 20px">Included
+									with
+									device
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="tab-content mt-3" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="list-home1">
+							<div class="row no-gutters"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/AN.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">Security</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+							<div class="row no-gutters mt-2"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/Excel.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">Excel</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+							<div class="row no-gutters mt-2"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/Word.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">Word</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+							<div class="row no-gutters mt-2"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/OneNote.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">OneNote</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="list-profile2">
+							<div class="row no-gutters mt-2"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/OneNote.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">OneNote</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="list-messages3">
+							<div class="row no-gutters mt-2"
+							     style="border: 1px solid #e2e0e0; min-height: 50px;border-radius: 20px">
+								<div class="col-3 text-left ">
+									<img alt="" src="images/Word.png"
+									     class="ml-xl-4 mt-xl-2 ml-4 mt-3 mr-xl-2 float-left "/>
+									<span class="h4 d-none d-xl-block mt-3">Word</span>
+								</div>
+								<div class="col-3 text-center mt-3">
+									<p class="h5 ">Apps</p>
+								</div>
+								<div class="col-3 text-center mt-3 ">
+									<p class="h5 m">Modified 12/20</p>
+								</div>
+								<div class="col-3 text-right mt-2">
+									<button class="btn btn-light mr-2 mt-1">Open</button>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="list-settings4">
+							<div class="display-4">来到了一片荒芜</div>
+						</div>
+					</div>
+				</div>
+			</div>          <!--5-->
+		</div>
+	</div>
+</div>
+<!---------------------------------------------------------------------------------------------->
+<div class="modal fade" id="model" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered " role="document">
+		<div class="modal-content">
+			<div class="modal-header ">
+				<h5 class="modal-title" id="exampleModalLongTitle4_1">Welcome</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="card border-0">
+					<div class="card-img text-center">
+						<p class="h4">Make Suggestions to Microsoft</p>
+						<!--							<img src="images/xl.png" alt="">-->
+					</div>
+					<div class="card-body">
+						<label for="input"></label>
+						<textarea class="form-control" type="text" id="input"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Tz()">
+					确定(S)
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="model2" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered " role="document">
+		<div class="modal-content">
+			<div class="modal-header ">
+				<h5 class="modal-title" id="exampleModalLongTitle4_2">Welcome</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="card border-0">
+					<div class="card-img text-center">
+						<p class="h4">Make Suggestions to Microsoft</p>
+						<!--							<img src="images/xl.png" alt="">-->
+					</div>
+					<div class="card-body">
+						<label for="input2"></label>
+						<textarea class="form-control" type="text" id="input2"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Tz()">
+					确定(S)
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="model3" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered " role="document">
+		<div class="modal-content">
+			<div class="modal-header ">
+				<h5 class="modal-title" id="exampleModalLongTitle4_3">Welcome</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="card border-0">
+					<div class="card-img text-center">
+						<p class="h4">Make Suggestions to Microsoft</p>
+						<!--							<img src="images/xl.png" alt="">-->
+					</div>
+					<div class="card-body">
+						<label for="input3"></label>
+						<textarea class="form-control" type="text" id="input3"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Tz()">
+					确定(S)
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

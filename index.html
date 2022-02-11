@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width = device -width"/>
+	<title>Microsoft Store</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/7.17.0_video-js.css" rel="stylesheet"/>
+	<script src="js/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/7.17.0_video.js"></script>
+	<script>
+        $(function(){
+            setTimeout(function(){
+                window.location.href="Home.html";
+            },1500);//1.5秒跳转
+        });
+        $(function () {
+            var h = window.innerHeight
+            document.getElementById("card-center").style.height = h + "px"
+            console.log(h)
+        })
+        window.onresize = function () {
+            var h = window.innerHeight;
+            document.getElementById("card-center").style.height = h + "px";
+        }
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+<div class="container-fluid  d-flex align-items-center justify-content-center" id="card-center">
+	<div class="card text-center  border-0 mt-3" >
+		<div class="card-img mb-5">
+			<img src="images/s1.png" alt="">
+		</div>
+		<div class="card-body">
+			<div class="spinner-border" role="status">
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
